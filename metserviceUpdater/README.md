@@ -4,7 +4,7 @@ A chrome extension to solve the small 48 hour Metservice forecaster. Install thi
 
 ## Installation
 ### Using the .crx File
-1. Download the [.crx file](https://github.com/michaelakerr/metservice-modal-enhancer/raw/master/metservice-modal-enhancer.crx)
+1. Download the [.crx file](https://github.com/michaelakerr/metservice-modal-enhancer/raw/master/metServiceUpdater.crx)
 2. Go to chrome://extensions/
 3. Drag and drop the .crx file onto the extensions page
 4. Click "Add extension"
