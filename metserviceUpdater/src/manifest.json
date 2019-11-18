@@ -1,0 +1,26 @@
+{
+	"manifest_version": 2,
+
+	"name": "Autoload 48 Hour observation on Metservice",
+	"description": "Unbreaking Metservice",
+	"version": "1.0",
+	"author": "Michaela Kerr",
+	"icons": {
+		"128": "icon128.png"
+	},
+
+	"browser_action": {
+		"default_icon": "icon128.png",
+		"default_popup": "popup.html"
+	},
+  
+	"permissions": ["storage"], 
+  
+	"content_scripts": [
+		{
+			"matches": ["https://www.metservice.com/*"],
+			"run_at": "document_end",
+			"js": ["checkModal.js"]
+		}
+	]
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Autoload 48 Hour observation on Metservice</title>
+		<script src='popup.js'></script>
+		<style>
+			body {
+				display: grid;
+				grid-template-columns: 100px 200px;
+			}
+			
+			img {
+				height: 100px;
+				width: 100px;
+			}
+			
+			.right {
+				grid-column: 2/3;
+			}
+			
+			button {
+				width: 90%;
+				display: block;
+				margin: 10px auto;
+				height: 35px;
+				border-radius: 3px;
+				font-size: 20px;
+				cursor: pointer;
+			}
+						
+			button.disabled {
+				border: solid 3px rgba(0, 26, 51, 0.8);
+				background: transparent;
+				color: #001a33;
+			}
+			
+			button.disabled:hover {
+				border: solid 3px rgb(0, 26, 51);
+				background: rgba(0, 26, 51, 0.2);
+			}
+			
+			button.enabled {
+				border: solid 3px #001a33;
+				background: rgba(0, 24, 51, 0.8);
+				color: white;
+			}
+			
+			button.enabled:hover {
+				background: rgb(0, 24, 51);
+			}
+			
+			p {
+				grid-column: 2/3; 
+				width: 90%; 
+				margin: 10px auto; 
+				text-align: center;
+			}
+			
+			span {
+				color: #00b55d;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="icon128.png">
+		<div class='right'>
+			<button id='enabled'></button>
+			<p><span id='skipped'></span> times you haven't had to click the full screen button</p>
+		</div>
+	</body>
+</html>
