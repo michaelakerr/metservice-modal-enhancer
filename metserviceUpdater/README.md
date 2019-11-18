@@ -20,6 +20,8 @@ A chrome extension to solve the small 48 hour Metservice forecaster. Install thi
 ## What is this?
 Were you a fan of the old Metservice where you could see the 48 hour forecast upon immediately loading the page?
 
-This chrome extension will look at towns and cities pages on Metservice which match towns and cities (not rural)! and load the page with the forecast in the immediate foreground. 
+This chrome extension will look at towns and cities pages on [Metservice](https://www.metservice.com/towns-cities/locations/hamilton)   which match towns and cities (not rural)! and load the page with the forecast in the immediate foreground so you don't have to press the expand button. 
+
+Sometimes, there is a bug which means it does not work, but press F5 to reload the page and it will.  This is because the metservice site is new currently and thinks it has finished loading when it has not. 
 
 Also credit to Brent for the chrome extension [template](https://github.com/brentvollebregt/uow-moodle-rwa-ignorer)
