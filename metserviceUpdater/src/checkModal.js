@@ -22,7 +22,7 @@ if(window.location.hash){
 		loaded = true;
 
 		chrome.storage.sync.get({'skipped': 0, 'enabled': true}, function(obj) {
-			var childs = document.getElementsByClassName("Slot")[3].children[1];
+			var childs = document.getElementsByClassName("Slot")[2].children[1];
 			var parentzone = document.getElementById("ModalContent");
 			var clone = childs.cloneNode(true);
 			clone.id = "appendedModal";
