@@ -10,7 +10,10 @@ function checkIfNodeIsAvailable(millisecondsDelay) {
 		const node = document.querySelector(clickableNodeSelector);
 		if (node !== null) {
 			// If it exists, click it
-			node.click()
+			chrome.storage.sync.get({'skipped': 0}, function(obj) {
+				node.click()
+				chrome.storage.sync.set({'skipped': obj.skipped + 1});
+			});
 		} else if (currentChecks < maxChecks) {
 			// If it doesn't exist and we haven't made an excessive amount of checks, try to find it later
 			currentChecks++;
@@ -22,6 +25,10 @@ function checkIfNodeIsAvailable(millisecondsDelay) {
 }
 
 window.addEventListener('load', function() {
-	// Check straight away after page load
-	checkIfNodeIsAvailable(0);
+	// Check straight away after page load if enabled
+	chrome.storage.sync.get({'enabled': true}, function(obj) {
+		if (obj.enabled) {
+			checkIfNodeIsAvailable(0);
+		}
+	});
 });
