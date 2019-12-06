@@ -1,40 +1,27 @@
-window.onload = function() {
-    if(!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-    }
+const maxChecks = 15;
+const clickableNodeSelector = ".Slot .ModalContent .Modal-expander span";
+
+let currentChecks = 0; // Keep track of how many times we have checked for a node to not get stuck in a loop
+
+function checkIfNodeIsAvailable(millisecondsDelay) {
+	// Delay the function as requested
+	setTimeout(function() {
+		// Try to find the target node
+		const node = document.querySelector(clickableNodeSelector);
+		if (node !== null) {
+			// If it exists, click it
+			node.click()
+		} else if (currentChecks < maxChecks) {
+			// If it doesn't exist and we haven't made an excessive amount of checks, try to find it later
+			currentChecks++;
+			console.log(`Node not yet available (checks: ${currentChecks})`);
+			checkIfNodeIsAvailable(500);
+		}
+	
+	}, millisecondsDelay);
 }
-var loaded = false;
 
-function funn(event){
-	if(loaded === true){
-		console.log(event.target.id);
-		document.getElementById("appendedModal").remove();
-		document.getElementById("ModalOverlay").className = "ModalOverlay";
-		
-	}
-}
-
-if(window.location.hash){
-	window.addEventListener('load', function() {
-		console.log('All assets are loaded');
-
-		loaded = true;
-
-		chrome.storage.sync.get({'skipped': 0, 'enabled': true}, function(obj) {
-			var childs = document.getElementsByClassName("Slot")[2].children[1];
-			var parentzone = document.getElementById("ModalContent");
-			var clone = childs.cloneNode(true);
-			clone.id = "appendedModal";
-			parentzone.appendChild(clone);
-			
-			document.getElementById("ModalOverlay").className = "ModalOverlay--open";
-			var exitIcon = document.getElementById("appendedModal").children[0].children[0].children[0];
-			document.getElementById("appendedModal").children[0].children[0].children[0].className = "icon icon-exit";
-			document.getElementById("appendedModal").children[0].children[0].children[0].id = "exiter";
-
-			document.getElementById("exiter").addEventListener("click", funn);
-			chrome.storage.sync.set({'skipped': obj.skipped + 1});
-		});
-	})
-}
+window.addEventListener('load', function() {
+	// Check straight away after page load
+	checkIfNodeIsAvailable(0);
+});
